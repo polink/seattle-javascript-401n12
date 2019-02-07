@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a7f880bb-ae27-49c5-a97b-0735c97e39d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/greet.js" afterDir="false" />
-    </list>
+    <list default="true" id="a7f880bb-ae27-49c5-a97b-0735c97e39d7" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -17,7 +15,7 @@
     <session id="1535904620">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.opened" value="3" />
@@ -77,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="273">
+              <caret line="51" column="53" selection-start-line="51" selection-start-column="53" selection-end-line="51" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -128,17 +126,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/node_modules" />
-  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="1565" />
-    <option name="y" value="41" />
+  <component name="ProjectFrameBounds">
     <option name="width" value="1280" />
     <option name="height" value="760" />
   </component>
@@ -206,15 +199,15 @@
       <updated>1549143723933</updated>
       <workItem from="1549143732635" duration="1618000" />
       <workItem from="1549146733173" duration="1372000" />
-      <workItem from="1549335057527" duration="3102000" />
+      <workItem from="1549335057527" duration="3678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6092000" />
+    <option name="totallyTimeSpent" value="6668000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1565" y="41" width="1280" height="760" extended-state="1" />
+    <frame x="0" y="0" width="1280" height="760" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25767368" />
@@ -272,8 +265,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="273">
+          <caret line="51" column="53" selection-start-line="51" selection-start-column="53" selection-end-line="51" selection-end-column="53" />
         </state>
       </provider>
     </entry>
