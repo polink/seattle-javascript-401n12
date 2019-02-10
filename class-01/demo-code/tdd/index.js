@@ -60,3 +60,27 @@ const testArrayReduced = warmUpReduce(testArray,(accumulator, currentValue) => {
 } ,0);
 
 console.log(testArrayReduced);
+
+const people = ['Kookla','Fran','Ollie'];
+
+const stuff = {
+  tv: 'huge',
+  radio: 'old',
+  toothbrush: 'frayed',
+  cars: ['Toyota','Mazda'], // Vinicio - this is the cars we are talking about
+};
+
+// Using spread and destructuring assignments, create a new object called newSate, repeating the newPeople and newStuff steps above but directly within the people and stuff nodes of the state object (don't just spread in newPeople and newStuff)
+
+// Vinicio - our task is to fill these lines
+let state = {people:[...people], stuff:{...stuff}};
+let newPeople = ["Odie",...people,"Garfield"];
+const newStuff = {...stuff, cars : [...stuff.cars, 'New Car :)']};
+let newState = {people:['Odie', ...people, 'Garfield'], stuff: {...stuff, cars:[...stuff.cars, 'New Car']}};
+
+console.log(state);
+console.log(newState);
+console.log(people);
+console.log(newPeople);
+console.log(stuff);
+console.log(newStuff);
