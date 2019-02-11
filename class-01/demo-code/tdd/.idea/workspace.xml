@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a7f880bb-ae27-49c5-a97b-0735c97e39d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +17,12 @@
     <session id="1535904620">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -39,19 +39,19 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="4520" />
+          <entry key="js" value="4530" />
           <entry key="json" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="39" />
-          <entry key="JavaScript" value="4520" />
+          <entry key="JavaScript" value="4530" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="5" />
+          <entry key="ESLintLanguageService" value="6" />
         </counts>
       </usages-collector>
     </session>
@@ -61,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="552">
+              <caret line="75" column="21" selection-start-line="75" selection-end-line="78" selection-end-column="108" />
             </state>
           </provider>
         </entry>
@@ -108,9 +108,11 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1280" />
+    <option name="y" value="-196" />
+    <option name="width" value="1920" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -178,12 +180,13 @@
       <workItem from="1549146733173" duration="1372000" />
       <workItem from="1549335057527" duration="3678000" />
       <workItem from="1549518444900" duration="280000" />
-      <workItem from="1549578533385" duration="1726000" />
+      <workItem from="1549578533385" duration="1975000" />
+      <workItem from="1549847648568" duration="21000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8674000" />
+    <option name="totallyTimeSpent" value="8944000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -195,7 +198,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <frame x="1280" y="-196" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.3901454" />
@@ -216,7 +219,7 @@
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32909605" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Quokka" order="13" visible="true" weight="0.108757064" />
+      <window_info active="true" anchor="bottom" id="Quokka" order="13" visible="true" weight="0.08122363" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -253,8 +256,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="552">
+          <caret line="75" column="21" selection-start-line="75" selection-end-line="78" selection-end-column="108" />
         </state>
       </provider>
     </entry>
