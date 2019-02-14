@@ -1,0 +1,17 @@
+1 - you need your own repo
+	- you can use the repo you used in 201 and 301
+	- you can make a new repo
+	- example name "code challenges and DSA"
+
+2 - repo structure
+	- create a folder called "data-structures"
+	- either create a folder name "challenges" or...don't
+	- every code challenge needs to exist in its own folder
+	Example
+		- if I have a challenge that asks me to add all the values in an array
+		- I'm going to create a new folder called 'add-values-in-array'
+		- Inside my new folder I start a new node project (by doing npm init)
+	- Please refer to the reference part of the repo for a sample structure
+
+3 - don't forget your .gitignore
+4 - follow the instructions in each lab.
