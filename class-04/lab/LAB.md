@@ -16,7 +16,6 @@
 
 ## Testing 
 * Test your units (assuming you break down the challenges into small, focused functions.
-* Create a target file to use as comparison, so that you have something to assert your work against.
 
 ### Assignemnt Submission Instructions
 Refer to the [lab-instructions.md](../../reference/submission-instructions/labs.md) for the complete lab submission process and expectations
