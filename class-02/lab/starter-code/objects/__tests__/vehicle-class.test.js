@@ -1,13 +1,13 @@
 'use strict';
 
 // Vinicio - let's use the full name in these instances
-const Vehicle = require('../constructor.js');
+const Vehicle = require('../vehicle-class.js');
 
 describe('Vehicles', () => {
 
   describe('Car', () => {
 
-    let car = new Vehicle.Car('foo');
+		let vehicle = new Vehicle();
 
     it('has 4 wheels', () => {
       expect(car.wheels).toEqual(4);
