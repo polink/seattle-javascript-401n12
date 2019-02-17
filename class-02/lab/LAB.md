@@ -23,36 +23,11 @@ In the `objects/__tests__` folder, you'll find a file called `vehicle.test.js` t
 * Have some fun with the properties and methods that are both shared and esoteric...
 * Start yourself with a Factory function this time, and then create the constructor function and class versions from that.
 * Again ... focus on making sure that your tests and implementations do not change when you switch out the object creators!
-
-#### List Module
-  * Create a new folder in the lab directory called `list` to house your code for this assignment
-  * implement a full List constructor using a **constructor function**
-  * implement the `.length` property
-  * implement the following methods on the list constructor
-    * `push()`
-    * `pop()`
-    * `shift()`
-    * `unshift()`
-    * `forEach()`
-    * `map()`
-    * `filter()`
-    * `reduce()`
-  * Do not use any built-in array methods to do this
-  
-  * **Re-Implement using a Class definition**
-    * Do this after your tests are completed.
-    * Note, that this should be a refactor, so your tests should remain unchanged and green once your re-implementation is completed
   
 ###### Testing
 * tests that ensure the list module functions correctly with error-check parameters
 * tests that the correct errors are thrown with invalid arguments exist
 * tests to ensure that the list module functions return the correct results when invoked with valid arguments
-
-###### Stretch Goal:
-  * Implement these methods as well ...
-    * `slice()`
-    * `splice()`
-    * `reverse()`
 
 
 ### Assignemnt Submission Instructions
