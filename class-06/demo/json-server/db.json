@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "name": "Pets",
+      "_id": 3
+    },
+    {
+      "name": "Things",
+      "_id": 4
+    },
+    {
+      "name": "Cats",
+      "_id": 5
+    },
+    {
+      "_id": 6
+    },
+    {
+      "_id": 7
+    },
+    {
+      "name": "Kali",
+      "_id": 8
+    }
+  ],
+  "products": [
+    {
+      "_id": 1,
+      "category": "Electronics",
+      "name": "Radio",
+      "price": 15.99
+    }
+  ]
+}

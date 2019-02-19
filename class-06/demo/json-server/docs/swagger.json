@@ -1,0 +1,70 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": ""
+  },
+  "paths": {
+    "": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": ""
+            }
+          }
+        }
+      }
+    },
+    "": {
+      "parameters": [
+        {
+          "in": "",
+          "name": "",
+          "required": ,
+          "type": ""
+        }
+      ],
+      "": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/getOne"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "getAll": {
+      "type": "object",
+      "items": {
+        "type": "object",
+        "properties": {}
+      },
+      "example": [
+        {"name": "Category 1", "id": 1},
+        {"name": "Category 2", "id": 2}
+      ]
+    },
+    "getOne": {
+      "type": "object",
+      "items": {
+        "type": "object",
+        "properties": {}
+      },
+      "example": {"name": "Category Name", "id": 1}
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ]
+}
