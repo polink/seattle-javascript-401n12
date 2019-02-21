@@ -1,0 +1,18 @@
+Parsing Files
+	Buffer || File --> Object ****
+		Height
+		ColorTable
+		RasterData
+		Width
+Input / Output from the console
+	1 - taking arguments from the console
+Input / Output from files
+  1 - Read a file --> Buffer
+	2 - Buffer -> Write a file
+Transformations
+	Buffer -> Transformed Buffer
+	Object ***
+	Easiest transformation -> colorize
+	buffer[i]; // Red
+	buffer[i+1]; // Green
+	buffer[i+2]; // Blue
