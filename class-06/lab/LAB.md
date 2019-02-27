@@ -10,7 +10,7 @@ The goal for this lab is to get your hands dirty in using an API, setting up a s
   * Create a new repository called "simple-api"
   * Create a folder called `data` with a `db.json` file
   * Start json-server from within the `simple-api` folder and "watch" your database file
-    * `json-server --watch=./data/db.json`
+    * `json-server --id=_id --watch db.json`
   * Data models should contain the following fields:
     * `categories`
       * `_id`, `name`, `display_name`, `description`
