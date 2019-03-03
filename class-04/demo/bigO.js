@@ -33,7 +33,7 @@
 //-------------------------------------------------------------------
 // O(N)
 //-------------------------------------------------------------------
-let array = [];
+let array = [1,2,4,4];
 // INPUT = ARRAY
 let operations = 0;// EXTRA
 //------------------------------------------------------------------
@@ -85,3 +85,34 @@ console.log(operations);
 // SPACE
 // How does the amount of space used change as the size of
 // the input changes
+
+array = [1,2,3,4,5,8];
+// INPUT = ARRAY
+operations = 0;// EXTRA
+//------------------------------------------------------------------
+for(let i = 0; i < array.length; i++) {
+  for(let i = 0; i < 5; i++) {
+    console.log(array[i]);
+    operations++;// EXTRA
+  }
+
+}
+//------------------------------------------------------------------
+console.log(array.length);//EXTRA (We call the size of the input N)
+console.log(operations);//EXTRA
+
+let TESTYOURMIGHT = (a, b) => {
+  let result = [1,2,3]
+  let found = {}
+  for(let i=0; i<a.length; i++) {
+    found[a[i]] = true
+  }
+  for(let i=0; i<b.length; i++) {
+    if(found[b[i]]) {
+      // Vinicio - this will only push if they exist in
+      //found
+      result.push(b[i])
+    }
+  }
+  return result
+}
