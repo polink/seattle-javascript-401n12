@@ -3,6 +3,8 @@
 const teams = require('./teams-schema.js');
 const mongoose = require('mongoose');
 
+// Vinicio - this is an actual mongoose Schema
+// Name of the field : A SET OF RULES
 const players = mongoose.Schema({
   name: { type:String, required:true },
   position: { type:String, required:true, uppercase:true, enum:['P','C','1B','2B','SS','3B','RF','LF','CF']},

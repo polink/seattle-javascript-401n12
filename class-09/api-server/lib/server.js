@@ -21,10 +21,9 @@ app.use(express.static('./public'));
 
 // Actual Routes
 app.use(apiRouter);
-
+// Vinicio - this line will match every request to the notFoundHandler
 app.use('*', notFoundHandler);
 app.use(errorHandler);
-
 
 module.exports = {
   server: app,
