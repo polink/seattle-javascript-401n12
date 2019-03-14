@@ -25,7 +25,7 @@
 * Your server must be deployed to and working on Heroku, with tests passing in Travis.
 
 ###  Documentation
-Complete the README.md file included in the lab folder
+Follow the README.md format discussed in class
 
 ### Assignemnt Submission Instructions
 Refer to the [lab-instructions.md](../../reference/lab-instructions.md) for the complete lab submission process and expectations
