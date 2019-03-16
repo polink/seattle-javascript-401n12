@@ -25,6 +25,7 @@ authRouter.post('/signin', auth, (req, res, next) => {
 });
 
 authRouter.get('/oauth', (req,res,next) => {
+  // Vinicio - Step 3
   oauth(req)
     .then( token => {
       res.status(200).send(token);
