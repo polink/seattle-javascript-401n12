@@ -1,7 +1,7 @@
 /**
  * Combines SuperTest and Mongoose Memory Server
  * to reduce (hopefully) the pain of
- * testing a Mongoose API
+ * testing a Mongoose API -- JB
  */
 
 const mongoose = require('mongoose');
@@ -21,16 +21,16 @@ supergoose.server = (server) => supertest(server);
  * Typically used in Jest beforeAll hook
  */
 supergoose.startDB = async () => {
-  
+
   mongoServer = new MongoMemoryServer();
-  
+
   const mongoUri = await mongoServer.getConnectionString();
-  
+
   const mongooseOptions = {
     useNewUrlParser:true,
     useCreateIndex: true
   };
-  
+
   await mongoose.connect(mongoUri, mongooseOptions, (err) => {
     if (err) console.error(err);
   });
