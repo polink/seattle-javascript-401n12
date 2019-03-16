@@ -20,6 +20,9 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+// Add our Routes
+// Book!
+
 // Catchalls
 app.use(notFound);
 app.use(errorHandler);
