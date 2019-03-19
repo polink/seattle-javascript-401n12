@@ -11,12 +11,6 @@ const users = new mongoose.Schema({
   role: {type: String, default:'user', enum: ['admin','editor','user']},
 });
 
-// const oauthUser = new mongoose.Schema({
-//   username: {type:String, required:true, unique:true},
-//   email: {type: String},
-//   role: {type: String, default:'user', enum: ['admin','editor','user']},
-// });
-
 users.pre('save', function(next) {
   bcrypt.hash(this.password, 10)
     .then(hashedPassword => {
@@ -25,6 +19,12 @@ users.pre('save', function(next) {
     })
     .catch(console.error);
 });
+
+users.statics.authenticateToken = function(token) {
+  let parsedToken = jwt.verify(token, process.env.SECRET);
+  let query = {_id: parsedToken.id};
+  return this.findOne(query);
+};
 
 users.statics.authenticateBasic = function(auth) {
   let query = {username:auth.username};
@@ -36,27 +36,6 @@ users.statics.authenticateBasic = function(auth) {
 users.methods.comparePassword = function(password) {
   return bcrypt.compare( password, this.password )
     .then( valid => valid ? this : null);
-};
-
-users.statics.createFromOauth = function(email) {
-
-  if(! email) { return Promise.reject('Validation Error'); }
-
-  return this.findOne( {email} )
-    .then(user => {
-      if( !user ) { throw new Error('User Not Found'); }
-      // Vinicio - over here someone wants to log in
-      console.log('Welcome Back', user.username);
-      return user;
-    })
-    .catch( error => {
-      // Vinicio - over here someone wants to create a new account
-      console.log('Creating new user');
-      let username = email;
-      let password = 'none';
-      return this.create({username, password, email});
-    });
-
 };
 
 users.methods.generateToken = function() {
