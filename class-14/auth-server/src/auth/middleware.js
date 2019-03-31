@@ -3,7 +3,7 @@
 const User = require('./users-model.js');
 
 module.exports = (capability) => {
-  
+
   return (req, res, next) => {
 
     try {
@@ -41,6 +41,7 @@ module.exports = (capability) => {
     }
 
     function _authenticate(user) {
+      // if the user exists
       if ( user && (!capability || (user.can(capability))) ) {
         req.user = user;
         req.token = user.generateToken();
@@ -56,5 +57,5 @@ module.exports = (capability) => {
     }
 
   };
-  
+
 };
