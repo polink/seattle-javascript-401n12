@@ -18,11 +18,17 @@ const users = new mongoose.Schema({
   role: {type: String, default:'user', enum: ['admin','editor','user']},
 });
 
+// ---------------------------------------------------------------------
+// HERE WE DEFINE WHAT USERS COULD DO
+// ---------------------------------------------------------------------
+// Vinicio - these roles are enforced because we send them as part of the
+// token
 const capabilities = {
   admin: ['create','read','update','delete'],
   editor: ['create', 'read', 'update'],
   user: ['read'],
 };
+// ---------------------------------------------------------------------
 
 users.pre('save', function(next) {
   bcrypt.hash(this.password, 10)
@@ -81,6 +87,7 @@ users.methods.generateToken = function(type) {
   
   let token = {
     id: this._id,
+		// Vinicio - this is telling the front-end what the user can't and can do
     capabilities: capabilities[this.role],
     type: type || 'user',
   };
@@ -89,13 +96,24 @@ users.methods.generateToken = function(type) {
   if ( type !== 'key' && !! TOKEN_EXPIRE ) { 
     options = { expiresIn: TOKEN_EXPIRE };
   }
-  
+  // Vinicio - take a look at the token that we send 
   return jwt.sign(token, SECRET, options);
 };
 
+// ---------------------------------------------------------------------------
+// This is the function we use to actually enforce opecations
+// ---------------------------------------------------------------------------
 users.methods.can = function(capability) {
   return capabilities[this.role].includes(capability);
 };
+// ---------------------------------------------------------------------------
+// 1 - find user
+// 2 - you know that the user wants to read an object
+// if(user.can('read'){
+//     continue with the reading;
+// } else {
+// response.status(401);
+//}
 
 users.methods.generateKey = function() {
   return this.generateToken('key');
