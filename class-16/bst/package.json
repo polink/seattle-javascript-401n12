@@ -1,0 +1,12 @@
+{
+  "name": "bst",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bst.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Vinicio Vladimir Sanchez Trejo <vladimirsan@gmail.com> (http://vladimirsan.com)",
+  "license": "ISC"
+}
