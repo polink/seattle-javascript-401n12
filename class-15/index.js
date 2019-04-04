@@ -43,7 +43,31 @@ three.right = five;
 
 const tree = new BinaryTree(one);
 
-preOrder(tree.root);
+//preOrder(tree.root);
+
+
+const breadthFirstTraversal =  (root) => {
+  // Vinicio - change this line to a real queue
+  const queue = [];
+  queue.push(root); // O(n) amortized operation :(
+
+  while(queue.length > 0) {
+    // Vinicio - getting a new element
+    let current = queue.shift(); // O(n) operation :(
+
+    // Vinicio - look at the element
+    console.log(current.value);
+
+    // Vinicio - put children in the queue
+    if (current.left)
+      queue.push(current.left);
+
+    if (current.right)
+      queue.push(current.right)
+  }
+};
+
+breadthFirstTraversal(tree.root);
 
 
 

@@ -5,11 +5,22 @@
 //-----------------------------------------------------------------
 const express = require('express');
 const fourOhFourMiddleware = require('./middleware/404');
+const errorMiddleware = require('./middleware/error');
 //-----------------------------------------------------------------
 // MAIN SERVER
 //-----------------------------------------------------------------
 const app = express();
+const authRouter = require('./auth/router');
+
+// Setup Routes
+app.use(express.json()); // Vinicio - parsing bodies from JSON
+
+// Custom Routes
+app.use(authRouter);
+
+// Default Routes
 app.use(fourOhFourMiddleware);
+app.use(errorMiddleware);
 
 //-----------------------------------------------------------------
 // EXTERNAL API
