@@ -1,104 +1,50 @@
-![cf](http://i.imgur.com/7v5ASc8.png) React Testing and Deployment
-============================================================
+![cf](http://i.imgur.com/7v5ASc8.png) 27: Forms and Props
+===
 
 ## Learning Objectives
+* Students will learn to test react components using jest and enzyme
+* Students will learn to manage controlled inputs
+* Students will learn to pass data from parent to child through props
 
-**Students will be able to ...**
-* Write and Execute Snapshot tests for a React Application
-* Write and Execute Enzyme (live) tests for a React Application
-* Deploy a React applicaation to AWS S3 manually
-* Deploy a React application to cloudfront directly from github
+## Readings
+* Skim [components and props](https://facebook.github.io/react/docs/components-and-props.html)
+* Skim [state and lifecycle](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* Skim [handling events](https://facebook.github.io/react/docs/handling-events.html)
+* Skim [forms](https://facebook.github.io/react/docs/forms.html)
 
 ## Outline
-* :05 **Housekeeping/Recap**
-* :30 **Whiteboard/DSA Review**
-* :15 **Lightning Talk**
-* Break
-* :30 **CS/UI Concepts** -
-* :20 **Code Review**
-* Break
-* :60 **Main Topic**
 
-## UI Concept:
-* SASS
-  * @import
-  * Mixins
-    * @include
+### Forms and Inputs
+React form elements maintain internal state. Think of React inputs as stateful child components. This means that we must manage the state of inputs through our own stateful component and one way data binding. The creation of a parent component (which we'll refer to as _form-container_), manages the state for all child components of the form and passes any necessary state down into it's inputs through the use of `props`. Each input has an `onChange` event that we can handle and use to update our _form-container's_ state each time the user interacts with an input.
 
-## Main Topics:
+### Props
+Components accept arbitrary inputs called `props`. In JSX, props are passed into a component with a syntax that looks like HTML attributes. `props` is the name of the object passed into a component consturctor and any prop added to a component in the JSX will be accessible as a property on `props`. After `props` is passed into the constructors `super` function, they are available on the context by using `this.props`.
 
-### AWS Deployments
-* Buckets
-  * Storage containers for static assets
-* Cloud Front
-  * The Cloud! Your stuff all over the planet, with a secure URL
-* Cloud Formation and Code Deploy
-  * Deployment pipleline that connects Github, Buckets and Cloud Front
+**Note: `props` are READ ONLY**
 
-### React Testing
-* **Snapshots** - Make assertions on the *exact* generated markup at any state of the application.
-* **Render Testing** - Similar to snapshots, but allows for jQuery-like inspection of the virtual DOM tree
-* **Shallow Testing** - Executes and renders the called/container component, but does not compose children.
-* **Mounting** - Executes the full component and children. Allows for inspection of rendered Virtual DOM as well as the current state
+##### Props Example
+``` javascript
+// props is the argument passed to the constructor
+// props can be accessed on `this` after being passed into super
+class Foo extends React.Component {
+  constructor(props){
+    super(props)
+    console.log('title', props.title)
+    console.log('content', props.content)
+  }
+  render(){
+    return (
+      <div>
+        <h1> {this.props.title} </h1>
+        <p> {this.props.content} </p>
+      </div>
+    )
+  }
+}
 
-Using a combination of approaches, you can easily "use" your application and ensure that things are changing both visually and physically (elements and state) as you expect.
-
-####Sample test for our counter component
-```
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Counter from '../../../../src/components/counter/counter.js';
-
-describe('<Counter/> (Enzyme Test)', () => {
-  it('is alive at application start', () => {
-    let app = mount(<Counter />);
-    expect(app.find('.count').text()).toBe('0');
-  });
-
-  it('can count up', () => {
-    let app = mount(<Counter />);
-    app.find('.up').simulate('click');
-    expect(app.state('count')).toEqual(1);
-    app.find('.up').simulate('click');
-    expect(app.state('count')).toEqual(2);
-  });
-
-  it('can count down', () => {
-    let app = mount(<Counter />);
-    app.find('.down').simulate('click');
-    expect(app.state('count')).toEqual(-1);
-    app.find('.down').simulate('click');
-    expect(app.state('count')).toEqual(-2);
-  });
-
-  it('visually displays proper polarity and value on the count element', () => {
-    let app = mount(<Counter />);
-    expect(app.find('.count.negative').exists()).toBeFalsy();
-    expect(app.find('.count.positive').exists()).toBeFalsy();
-    // Go to 1
-    app.find('.up').simulate('click');
-    expect(app.find('.count.positive').exists()).toBeTruthy();
-    expect(app.find('.count').text()).toBe('1');
-
-    // Down to zero
-    app.find('.down').simulate('click');
-    expect(app.find('.count').text()).toBe('0');
-    expect(app.find('.count.negative').exists()).toBeFalsy();
-    expect(app.find('.count.positive').exists()).toBeFalsy();
-
-    // Down to -1
-    app.find('.down').simulate('click');
-    expect(app.find('.count.negative').exists()).toBeTruthy();
-    expect(app.find('.count').text()).toBe('-1');
-  });
-});
-
-describe('<Counter/> Core Component (Snapshot Test)', () => {
-  it('renders right', () => {
-    const component = renderer.create(<Counter />);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
+// adding props to a component
+<Foo title='some literal value value' content={this.state.article.content}>
 ```
 
+### One Way Data flow
+State can only be passed from parent component to a child component through the use of `props`. This enforces the idea of one way data flow. One way data flow is a way of describing that state can only be passed down the component tree (not up). If a child wants to pass some data to a parent, the parent can pass a function to the child through `props` and the child may invoke that function and pass it data for the parent to manage.

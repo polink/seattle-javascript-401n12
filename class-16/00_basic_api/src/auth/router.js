@@ -12,7 +12,10 @@ authRouter.post('/signup', (request,response,next) => {
   // Vinicio - making a new object, DOES NOT mean you save it in the db
   return user.save() // Vinicio - this line invokes the hook
     .then(user => {
-      response.sendStatus(200);
+      // Vinicio - what can we assume in this line of code?
+      // We have a user, this is the perfect time to create a token
+      const token = user.generateToken();
+      response.send(token);
     })
     .catch(next);
 });

@@ -23,6 +23,8 @@ beforeAll(supergoose.startDB);
 afterAll(supergoose.stopDB);
 //------------------------------------------------------------------------
 
+let savedToken = null;
+
 describe('#Auth Router', () => {
   it('can get a 200 status code and a token when creating a user', () => {
     // 1 - INPUT: SEND a POST request with username and pass
@@ -33,7 +35,28 @@ describe('#Auth Router', () => {
         expect(response.status).toEqual(200);
 
         const token = jsonWebToken.verify(response.text, process.env.SECRET || 'sekret');
+        // Vinicio - token is decrypted
+        savedToken = response.text;
         expect(token.id).toBeDefined();
+      });
+  });
+
+  it('can set authenticated requests to an authenticated route', () => {
+    // 1 - INPUT: SEND a GET Request with a token
+    return mockRequest.get('/protected')
+      .set('Authorization', `Bearer ${savedToken}`)
+      .then(response => {
+        // 2 - OUTPUT: 200 Status Code
+        expect(response.status).toEqual(200);
+      });
+  });
+
+  it('can set reject requests without a proper token', () => {
+    // 1 - INPUT: SEND a GET Request with a invalid token
+    return mockRequest.get('/protected')
+      .set('Authorization', `Bearer null`)
+      .then(response => {
+        expect(response.status).toEqual(401);
       });
   });
 });

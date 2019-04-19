@@ -11,12 +11,14 @@ const errorMiddleware = require('./middleware/error');
 //-----------------------------------------------------------------
 const app = express();
 const authRouter = require('./auth/router');
+const protectedRouter = require('./protected/router');
 
 // Setup Routes
 app.use(express.json()); // Vinicio - parsing bodies from JSON
 
 // Custom Routes
 app.use(authRouter);
+app.use(protectedRouter);
 
 // Default Routes
 app.use(fourOhFourMiddleware);

@@ -1,73 +1,40 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Component Based UI
-========================================================
+![cf](http://i.imgur.com/7v5ASc8.png) 26: Frontend Tooling and React
+===
 
 ## Learning Objectives
+* Students will be able to configure webpack to build a web application bundle
+* Students will be able to configure babel to transpile JSX and ES6 to ES5 JavaScript
+* Students will be able to create and render React components to the DOM
+* Students will be able to add event listeners to React components 
+* Students will be able to update React component state
 
-**Students will be able to ...**
-* Desribe in general terms "Component Architecture"
-* Describe in general terms application and component "State"
-* Begin a React project locally with `create-react-app`
-* Use codesandbox.io to work live on a React application
-* Create and render `Class` and `Functional` React components to the DOM
-* Add event listeners to React components
-* Update React component state
-* Style React applications/components
+## Resources
+* Skim [webpack concepts](https://webpack.js.org/concepts/)
+* Skim [webpack configuration](https://webpack.js.org/configuration/)
+* Skim [react hello world](https://facebook.github.io/react/docs/hello-world.html) 
+* Skim [introducing JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
+* Skim [rendering elements](https://facebook.github.io/react/docs/rendering-elements.html)
 
 ## Outline
-* :05 **Housekeeping/Recap**
-* :30 **Whiteboard/DSA Review**
-* :15 **Lightning Talk**
-* Break
-* :30 **CS/UI Concepts** -
-* :20 **Code Review**
-* Break
-* :60 **Main Topic**
 
-## UI Concept:
-* SASS
-  * Nesting of selectors
-  * Variables
+### Webpack
+Webpack is a module bundler for JS applications. It compiles modern JavaScript applications into bundles that can be loaded into a browser. **All of your project assets should be managed by webpack**, including JSON, JS, CSS, SCSS, HTML, IMAGES, FONTS, etc.
 
-## Main Topic:
-Component based UI systems like `React`, `Angular`, `Vue` and the like all operate on similar architectural principles.
+### Plugins 
+Plugins can be added to webpack to add extra functionality. Some examples include:  
+ * creating HTML files with dynamic script and link tags
+ * creating CSS files
+ * uglifying and minifying your code
+ * creating project global vars at compile time
 
-* Rather than view an application as an enourmous interconnected codebase, the application is a **composition** of `components` that work together to make the application work.
-* The secret sauce is how they work together.
-* We use Classes and Functions to classify functionality
-* We require what we need
-* We render it where we want
-* We pay attention to `state` and react as it changes.
-
-#### COMPONENTS!
-<img src="components.png" width="400">
-
-#### STATE!
-<img src="state.jpg" width="400">
-
+### Loaders
+Loaders can be added to webpack to transform the data (code/json/images/etc.) imported into a project. Loaders are configured to only apply their transformations to files that match user defined regular expressions. Loaders can be chained together to transform data. Some examples include:
+* transform ES6 files into ES5 files with Babel
+* transform SASS files into CSS files
+* transform images/fonts into base64 data embedded into your SASS/CSS
 
 ### React
-**We will be using React in this course to learn these basic principles**
+React is a component based view and state management library. It's designed to be declarative, making it "painless" to create interactive user interfaces. React can run in browsers and natively on mobile devices.
 
-As a component based system, React does an awful lot for us, principally, it gets out out of the way and makes it EASY to implement your application the way you see it, using familiar tools.
-
-* JSX looks like markup, but it's actually Javascript. If you had to code it out, you wouldn't...
-
-JSX
-```
-const element = (
-  <h1 className="greeting">
-    Hello, world!
-  </h1>
-);
-```
-Behind the scenes...
-```
-const element = React.createElement(
-  'h1',
-  {className: 'greeting'},
-  'Hello, world!'
-);
-```
-
-
-
+### Components  
+React components have a render method that returns a view to be rendered to the page. React developers use JSX to make their applications more readable and have a more expressive workflow when writing React views. JSX looks like HTML, but gets transpiled to ordinary JavaScript `React.createElement()` invocations by Babel. React components can also have `state` and lifecycle hooks. When the state of a React component bound to a view changes, the view will automatically re-render itself, eliminating the pain of manual DOM manipulation under most circumstances. React components can implement specific methods that will get called at specific points. These are called lifecycle hooks. React components can also pass data into their children through what is called one way data binding. We say that React applications have one-way data flow, because data is only passed from the top down.
