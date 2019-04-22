@@ -1,73 +1,24 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Component Composition
-============================================
+![cf](http://i.imgur.com/7v5ASc8.png) 29:  Component Composition
+===
 
 ## Learning Objectives
+* Students will learn to about composition vs inheritance
+* Students will learn how to compose react components using props
 
-**Students will be able to ...**
-
-* Compose components heirarchically
-* Create logical wrapper components
-* Create functional wrapper components
-* Utilize `children` in composed components
-* Compose the `<List>, <If>, <Card>, <Deck>` Components
+## Readings
+* Read [conditional rendering](https://facebook.github.io/react/docs/conditional-rendering.html)
+* Read [lists and keys](https://facebook.github.io/react/docs/lists-and-keys.html)
+* Read [composition vs inheritance](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
+* Read [thinking in react](https://facebook.github.io/react/docs/thinking-in-react.html)
+* Skim [jest docs](https://facebook.github.io/jest/docs/en/getting-started.html)
+* Skim [enzyme docs](https://github.com/airbnb/enzyme)
 
 ## Outline
-* :05 **Housekeeping/Recap**
-* :30 **Whiteboard/DSA Review**
-* :15 **Lightning Talk**
-* Break
-* :30 **CS/UI Concepts** -
-* :20 **Code Review**
-* Break
-* :60 **Main Topic**
 
+## Component Composition
 
-## UI Concept:
-* Cards and Decks - Concept
-* Cards and Decks - Layout/SASS
+### Composition  
+Some components don't know their children ahead of time. React components can use the special `children` prop to pass children directly into their output. For example a `SpeechBubble` component could be passed a `SuccessMessage` or `ErrorMessage` component to be used as a child component.
 
-## Main Topic:
-Component Composition - Logical
-
-In this setup, you are sending your child components the raw data and allowing them to render the output as they decide.
-
-```javascript
-
-// Dashboard Wrapper
-//  - feeds the SearchForm some methods
-//  - then feeds the results some data
-
-<Dashboard>
-  <SearchForm handler={this.doTheSearch} />
-  <Results data={this.state.results} />
-</Dashboard>
-
-// .. Results Component
-<ul>
-  {this.props.data.map( (item,i) => <li key={i}>{item}</li> );
-</ul>
-
-```
-
-Component Composition - Using Logicless Children
-
-This is typically used when your `children` are already in JSX form (pre-rendered) and you need to display them as a whole.  A good example might be a gallery of images
-
-```javascript
-<Dashboard>
-  render() {
-    let listings = {this.state.results.map( (item,i) => <li key={i}>{item}</li> );
-  }
-  <SearchForm handler={this.doTheSearch} />
-  <Results>
-    { listings.map( listing => listing ) }
-  </Results>
-</Dashboard>
-
-// Results Component
-
-<ul>
-  {this.props.children}
-</ul>
-
-```
+### Specialization
+Composition can be used to create special cases of another component. For example a `Modal` component could be composed to create a `SignupModal`, `LoginModal`, or even a generic `ContentModal`.

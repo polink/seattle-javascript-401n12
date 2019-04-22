@@ -1,111 +1,59 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Props and State
-============================================
+![cf](http://i.imgur.com/7v5ASc8.png) 28: Routing and Testing
+===
 
 ## Learning Objectives
+* Students will learn to create frontend routes using `react-router-dom`
+* Students will learn to restructure their applications into modules
+* Students will learn the difference between view state and application state
+* Students will learn to lift application state to better control one way data flow
+* Students will learn to create and import SCSS partials
 
-**Students will be able to ...**
-
-* Pass props from a container component to a child
-* Execute methods in a parent component from a child
-* Manage state from events
-* Handle form input
+## Readings
+* Skim [es6 modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/)
+* Read [react-router-dom philosophy](https://reacttraining.com/react-router/web/guides/philosophy)
+* Read [lifting state up](https://facebook.github.io/react/docs/lifting-state-up.html)
+* Skim [mdn import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+* Skim [mdn export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 
 ## Outline
-* :05 **Housekeeping/Recap**
-* :30 **Whiteboard/DSA Review**
-* :15 **Lightning Talk**
-* Break
-* :30 **CS/UI Concepts** -
-* :20 **Code Review**
-* Break
-* :60 **Main Topic**
 
-## UI Concept:
-* Card and Deck Basics
-* Understanding Bleed and Transitions
+### Frontend React Routing
+The primary routing library for react web applications is `react-router-dom`. It manages switching between components based off of state or the window location.  It will also control the browsers history, through the use of the history API. By using the browser history API, it enables users to hit the back button on their browser and revert to the last route without re-rendering the page.
 
-## Main Topic:
+### Types of State
 
-### Forms and Inputs
-React form elements maintain internal state. Think of React inputs as stateful child components. This means that we must manage the state of inputs through our own stateful component and one way data binding. The creation of a parent component (which we'll refer to as _form-container_), manages the state for all child components of the form and passes any necessary state down into it's inputs through the use of `props`. Each input has an `onChange` event that we can handle and use to update our _form-container's_ state each time the user interacts with an input.
+##### Application State
+Application state is any state that represents the core data of your application. This is your all your models. Examples include:  
+* Auth
+* User
+* Note
+* Article
 
-### Props
-Components accept arbitrary inputs called `props`. In JSX, props are passed into a component with a syntax that looks like HTML attributes. These are the equivalent of function params.
+##### View State
+View state is any state that has to do with how a specific component should look. Examples include:  
+* input's values
+* which menu item is focused
+* when to hide/show a section of the view
+* when  a hamburger menu is open or closed
 
-In actuality, `props` is the name of the object passed into a component consturctor and any prop added to a component in the JSX will be accessible as a property on `props`.
+### Lifting State
+Because data can only flow from parents to children, if more than one component needs to reflect the same changing data, that data must be managed higher on the tree by a mutual parent. One solution to this problem is to lift all **application state** to the top of the application, enabling the entire application to share changing state. **View State** does not often have to be lifted.
 
-After `props` is passed into the constructors `super` function, they are available on the context by using `this.props`.
+### ES6 modules
+ES6 now supports its own ability to define JS modules. ES6 Modules are like commonJS modules, except they are automatically strict-mode code, even if you don't write `use strict`. ES6 now uses `export` and `import` to define and load modules.
 
-##### Props Example ... the way we get to use them
-``` javascript
-const element = (
-  <h1 className="greeting">
-    Hello, world!
-  </h1>
-);
-```
+### Testing
 
-##### Props -- what's actually happening under the hood
-```javascript
+##### Jest
+Jest is a Javascript testing framework with out of the box react support. Jest methods include:
+* `describe` (same as mocha)
+* `beforeAll`, `afterAll` (same as mocha before and after)
+* `beforeEach` , `afterEach` (same as mocha)
+* `test` (same as mocha it)
+* `expect` (similar to expect js)
 
-const element = React.createElement(
-  'h1',
-  {className: 'greeting'},
-  'Hello, world!'
-);
-
-```
-
-
-#### Props can be data or functions
-In javascript, we can pass functions around like variables. We've been doing this all along (named callback functions in express and jQuery for example).  Now we get to really harness that power!
-
-When this renders ...
-* Foo will draw Bar
-* Bar will draw a button
-* When that button gets clicked, it's `onClick` action fires
-  * That action runs the method `this.props.handleClick`
-  * That method runs in `<Foo>` ... `<Foo>` passed it down to `<Bar>` essentially telling it what it wants it to do.
-* This is a means of passing not only **Data** but **Behavior** down the component tree
-
-
-``` javascript
-
-class Foo extends React.Component {
-  constructor(props){
-    super(props)
-  }
-
-  screamLoud() {
-    console.log("OUCH");
-  }
-
-  render(){
-    return (
-      <div>
-        <Bar handleClick={this.screamLoud} />
-      </div>
-    )
-  }
-}
-
-class Bar extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    <div>
-      <button onClick={this.props.handleClick}>Click</button>
-    </div>
-  }
-
-}
-
-// Render the element ...
-<Foo />
-```
-
-### One Way Data flow
-State can only be passed from parent component to a child component through the use of `props`. This enforces the idea of one way data flow. One way data flow is a way of describing that state can only be passed down the component tree (not up). If a child wants to pass some data to a parent, the parent can pass a function to the child through `props` and the child may invoke that function and pass it data for the parent to manage.
+##### Enzyme
+Enzyme is a utility designed to ease the testing of react components. It has a jQuery like api that helps interact with React components. It provides several methods for compiling/rendering components:
+* `shallow(<Component />)` - shallow rendering is useful to test a component without indirectly asserting behavior of child components
+* `render(<Component />)` - static rendering is used to render components to static html (text) and analyze the resulting HTML structure
+* `mount(<Component />)` - full rendering is ideal when your components interact with DOM APIs

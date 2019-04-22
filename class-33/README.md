@@ -1,72 +1,36 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Remote APIs
-=================================================
+![cf](http://i.imgur.com/7v5ASc8.png) 33: Redux Middleware
+===
 
 ## Learning Objectives
+* Students will be able to create middleware for redux
+* Students will be able to add third party middleware to redux
 
-**Students will be able to ...**
-* Understand and implement `thunk` middleware
-* Perform asynchronous redux actions
-* Take advantage of lifecycle hooks
+## Readings
+* Read [redux middleware](http://redux.js.org/docs/advanced/Middleware.html)
 
-## Outline
-* :05 **Housekeeping/Recap**
-* :30 **Whiteboard/DSA Review**
-* :15 **Lightning Talk**
-* Break
-* :30 **CS/UI Concepts** -
-* :20 **Code Review**
-* Break
-* :60 **Main Topic**
+## Overview
 
-## UI Concept:
-* `<List />` component
+### Redux
+Redux middleware provides a third-party extension point between dispatching and action at the moment it reaches the reducer. It can be used for logging actions, adding promise support, making API requests, caching, throttling, and much more.
 
-## Main Topic:
-Using Redux actions to connect to remote APIs via Thunk Middleware
+### Example Middleware
 
-Normally, action generators return a function, like this:
+``` javascript
+// middleware used for error reporting and logging
+let reporter = store => next => action => {
+  console.log('__ACTION__', action);
 
-```javascript
-const get = (payload) => {
-  return {
-    type: 'GET',
-    payload: payload
+  try {
+    let result = next(action);
+    console.log('__STATE__', store.getState());
+    return result;
+  } catch (error) {
+    error.action = action;
+    console.error('__ERROR__', error);
+    return error;
   }
 }
+
+export default reporter;
 ```
 
-But often, you'll need your actions to do some asynchronous action before you dispatch it to the reducer. For example, you may need to get something from a remote api.
-
-In this case, we want to set it up like this, where the action you dispatch from your React App returns a function, not an acual action object, which is what Redux **expects** and **requires**
-
-```javascript
-let api = 'https://api.mockable.io/api/v1/stuff';
-
-export const get = () => dispatch => {
-  return utils.fetchData(api).then(records => {
-    dispatch(getAction(records));
-  });
-};
-
-const getAction = payload => {
-  return {
-    type: 'GET',
-    payload: payload,
-  };
-};
-```
-
-So, we will implement a new piece of middleware, called a "thunk", which inspects every dispatched action and then either lets it go through (in the case of a normal action that returns an object) or it processes the function and then dispatches what that function returns.
-
-Notice in the example above, that the function we ran for the action is curried, and receives `dispatch()`, which it calls with the payload it got from the server.
-
-**What does thunk middleware look like?**
-
-```javascript
-export default store => next => action =>
-  typeof action === 'function'
-    ? action(store.dispatch, store.getState)
-    : next(action);
-```
-
-At its base level, this is all we really need.  However, we're going to be using the `redux-thunk` npm module in our production applications, as it provides more stability and error checking for us.
