@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ladyBees | learn to spell</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <h2><span id="score">0</span> of <%= number %></h2>
+        <h3><%= name %></h3>
+        <h5><%= difficulty %></h5>
+    </header>
+
+    <main>
+        <% words.forEach((word, index) => { %>
+        <div id="div<%= index %>" class="hidden">
+            <!--Sentence-->
+            <h1>
+                <%= word.sentence %>
+            </h1>
+
+
+            <audio src=<%= word.audioFilePathWord %> id="audio<%= index %>"></audio>
+            <button onclick="onButtonClick('audio<%= index %>')">hear word</button>
+            <audio src=<%= word.audioFilePathSentence %> id="audio<%= index %>-sentence"></audio>
+            <button onclick="onButtonClick('audio<%= index %>-sentence')">use in a phrase</button>
+
+            <!--Text input-->
+            <form id="form<%= index %>">
+            <input type="hidden" id="word<%= index%>" value="<%= word.word %>">
+            <input type="text" name="spelledWord" id="spell<%= index %>" placeholder="Spell word here" required/>
+            </form>
+        </div>
+        <% }); %>
+
+        <section id="final" class="hidden">
+            <h1 id="winOrLose"></h1>
+            <form id="finalScore" method="post" action="/score">
+                <label>Name</label><input type="text" name="name" value="<%= name %>" readonly><br>
+                <label>Score</label><input type="text" name="score" value="" readonly><br>
+                <label>Difficulty</label><input type="text" name="difficulty" value="<%= difficulty %>" readonly><br>
+                <label for="missedWord">Missed Word</label><input type="text" name="missedWord" id="missedWord" value ="" readonly><br>
+
+                <button type="submit">Save to Scoreboard</button>
+            </form>
+            <a href="./">[ Play Again? ]</a></h3>
+        </section>
+        <h3>
+    </main>
+
+</body>
+<footer>
+    <script
+            src="https://code.jquery.com/jquery-3.4.0.min.js"
+            integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+            crossorigin="anonymous"></script>
+    <script src="/jquery.js"></script>
+</footer>
+</html>

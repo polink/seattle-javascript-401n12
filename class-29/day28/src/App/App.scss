@@ -1,0 +1,8 @@
+// Vinicio - every component will style itself and only itself
+// Vinicio - components can position their direct children
+
+@import "../styles/_vars.scss";
+
+.app {
+  background-color: $primary-color;
+}
