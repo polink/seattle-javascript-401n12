@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ladyBees | learn to spell | your score</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
+</head>
+    <body>
+
+    <header>
+        <h1>Thanks for playing!</h1>
+    </header>
+
+    <main>
+
+        <table id="scores">
+            <tr>
+                <th>Name</th>
+                <th>Difficulty</th>
+                <th>Score</th>
+                <th>Missed Word</th>
+            </tr>
+
+            <tr>
+                <td><%= score.name %></td>
+                <td><%= score.difficulty %></td>
+                <td><%= score.score %></td>
+                <td><%= score.missedWord %></td>
+            </tr>
+        </table>
+
+        <a href="./scores">[ See all scores ]</a></h3>
+
+    </main>
+
+    </body>
+</html>

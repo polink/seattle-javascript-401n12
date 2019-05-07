@@ -1,0 +1,47 @@
+{
+  "name": "spelling-bee",
+  "version": "1.0.0",
+  "description": "Spelling Bee app for Code 401 Midterm",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "voiceLS": "export GOOGLE_APPLICATION_CREDENTIALS=home/lorin/cf/401/spellingBee/cloud-authentication.json | node index.js",
+    "watch": "nodemon index.js",
+    "test-watch": "jest --watchAll",
+    "test": "jest --coverage --detectOpenHandles",
+    "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
+    "dbOff": "killall mongod"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [],
+  "author": "Xochil, H'Liana, Nikki, Lorin",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/text-to-speech": "^0.5.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "debug": "^4.1.0",
+    "dotenv": "^6.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "jest": "^24.7.1",
+    "mongodb-memory-server": "^2.7.3",
+    "mongoose": "^5.3.13",
+    "mongoose-schema-jsonschema": "^1.1.15",
+    "morgan": "^1.9.0",
+    "random-words": "^1.1.0",
+    "require-directory": "^2.1.1",
+    "supertest": "^3.4.2",
+    "swagger-ui-express": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ladybees/spellingBee.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ladybees/spellingBee/issues"
+  },
+  "homepage": "https://github.com/ladybees/spellingBee#readme"
+}
