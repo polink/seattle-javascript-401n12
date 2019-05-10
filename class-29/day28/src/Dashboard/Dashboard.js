@@ -81,7 +81,7 @@ export default class Dashboard extends React.Component {
   render(){
     return(<div>
       <h2>Expense Dashboard</h2>
-      <ExpenseForm handleAddExpense={this.handleAddExpense}/>
+      <ExpenseForm handleComplete={this.handleAddExpense}/>
       { this.renderExpenses() }
     </div>);
   }

@@ -20,9 +20,9 @@ export default class ExpenseItem extends React.Component {
     const hideModal = ()=> handleUpdateExpense({...currentExpense, editing: false});
 
     // Vinicio - this function (once you plug it in) will update and close the form
-    // const handleEditView = (updatedExpense) => {
-    //   handleUpdateExpense({...updatedExpense, editing: false});
-    // };
+    const handleUpdate = (updatedExpense) => {
+      handleUpdateExpense({...updatedExpense, editing: false});
+    };
     // -------------------------------------------------------------------------------
 
     return(
@@ -33,7 +33,7 @@ export default class ExpenseItem extends React.Component {
        <button onClick={showModal}>Edit</button>
        {/*<button onClick={this.removeHelper}>Remove </button>*/}
        <Modal show={currentExpense.editing} hideModal={hideModal}>
-         <ExpenseForm/>
+         <ExpenseForm expense={currentExpense} handleComplete={handleUpdate}/>
        </Modal>
      </li>
     );
