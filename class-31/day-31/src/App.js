@@ -18,8 +18,9 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   // Vinicio - anything I return here WILL become props
+  // Vinicio - now the state is not just the sections :(
   return {
-    sections: state,
+    sections: state.sections, // state:{sections:, cards:}
   };
 };
 
