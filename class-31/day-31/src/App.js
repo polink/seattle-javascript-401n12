@@ -8,6 +8,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
+        <p> Welcome</p>
         <SectionForm onComplete={this.props.mappedSectionCreate}/>
         { this.props.sections.map(current => <p>{current.title}</p>)}
       </div>

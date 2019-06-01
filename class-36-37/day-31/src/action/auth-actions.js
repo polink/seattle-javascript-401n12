@@ -18,8 +18,9 @@ export const remove = () => ({
 // ASYNC
 //---------------------------------------------------------------
 // Vinicio - async functions need to take the store as an argument
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://localhost:5000/';
 const SIGNUP_ROUTE = 'signup';
+const LOGIN_ROUTE = 'login';
 
 // Vinicio - it's your job to call this function with everything it needs
 export const signupRequest = user => store => {
@@ -29,6 +30,16 @@ export const signupRequest = user => store => {
     .then(response => {// Step 2 - get a response
       // Step 3 - Update the store with a sync action
        return store.dispatch(set(response.text));
+    })
+    .catch(console.log);
+};
+
+export const loginRequest = (username, password) => store => {
+  return superagent.get(`${API_URL}${LOGIN_ROUTE}`) // Step 1 - making a request
+    .auth(username, password)
+    .withCredentials()
+    .then(response => {
+      return store.dispatch(set(response.text));
     })
     .catch(console.log);
 };
