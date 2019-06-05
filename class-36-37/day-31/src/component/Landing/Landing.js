@@ -12,9 +12,12 @@ class Landing extends React.Component{
   // Signup
   // /
 
-  // handleLogin = () => {};
+
   handleSignup = (user) => {
     return this.props.pDoSignUp(user);
+  };
+  handleLogin = (user) => {
+    return this.props.pDoLogin(user.username, user.password);
   };
 
   render() {
@@ -35,7 +38,7 @@ class Landing extends React.Component{
     const loginJSX =
       <div>
         <h1>Login</h1>
-        <AuthForm type='login'/>
+        <AuthForm type='login' onComplete={this.handleLogin}/>
         <Link to='/signup'> Sign up to our application</Link>
       </div>;
 
@@ -69,6 +72,9 @@ class Landing extends React.Component{
 const mapDispatchToProps = dispatch => ({
   pDoSignUp: user => {
     return dispatch(authActions.signupRequest(user))
+  },
+  pDoLogin: (username, password) => {
+    return dispatch(authActions.loginRequest(username, password))
   },
 });
 
